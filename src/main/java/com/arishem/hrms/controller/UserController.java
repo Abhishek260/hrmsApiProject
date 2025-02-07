@@ -1,7 +1,6 @@
 package com.arishem.hrms.controller;
 
 import com.arishem.hrms.model.ApiResponse;
-import com.arishem.hrms.model.UserLoginResponse;
 import com.arishem.hrms.model.UserRequest;
 import com.arishem.hrms.service.UserService;
 import org.springframework.web.bind.annotation.*;

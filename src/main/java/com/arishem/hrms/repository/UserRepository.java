@@ -1,6 +1,4 @@
 package com.arishem.hrms.repository;
-
-import com.arishem.hrms.model.UserLoginResponse;
 import com.arishem.hrms.model.UserRequest;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.ParameterMode;

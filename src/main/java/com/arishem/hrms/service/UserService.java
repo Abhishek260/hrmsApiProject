@@ -1,7 +1,6 @@
 package com.arishem.hrms.service;
 
 import com.arishem.hrms.model.ApiResponse;
-import com.arishem.hrms.model.UserLoginResponse;
 import com.arishem.hrms.model.UserRequest;
 import com.arishem.hrms.repository.UserRepository;
 import org.springframework.stereotype.Service;
