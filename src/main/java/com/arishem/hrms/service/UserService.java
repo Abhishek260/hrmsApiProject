@@ -1,6 +1,8 @@
 package com.arishem.hrms.service;
 
 import com.arishem.hrms.model.ApiResponse;
+import com.arishem.hrms.model.UserLoginResponse;
+import com.arishem.hrms.model.UserRequest;
 import com.arishem.hrms.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import java.util.*;
@@ -33,4 +35,36 @@ public class UserService {
             return new ApiResponse<>(0, "DB_ERROR", e.getMessage(), new ArrayList<>());
         }
     }
+
+    public ApiResponse<Map<String, Object>> createUser(UserRequest userRequest) {
+        try {
+            Map<String, Object> result = userRepository.createUser(userRequest);
+
+            int status = (int) result.get("status");
+            String message = (String) result.get("message");
+
+            Map<String, Object> responseData = new HashMap<>();
+            responseData.put("username", userRequest.getUsername());
+            responseData.put("message", message);
+
+            return new ApiResponse<>(status, status == 1 ? "" : "USER_CREATION_FAILED", message, Collections.singletonList(responseData));
+        } catch (Exception e) {
+            return new ApiResponse<>(0, "DB_ERROR", e.getMessage(), new ArrayList<>());
+        }
+    }
+
+
+    public ApiResponse<Map<String, Object>> validateLogin(String username, String password) {
+        try {
+            Map<String, Object> result = userRepository.validateLogin(username, password);
+
+            int status = (int) result.get("status");
+            String message = (String) result.get("message");
+
+            return new ApiResponse<>(status, status == 1 ? "" : "LOGIN_FAILED", message, Collections.singletonList(result));
+        } catch (Exception e) {
+            return new ApiResponse<>(0, "DB_ERROR", e.getMessage(), Collections.emptyList());
+        }
+    }
+
 }
