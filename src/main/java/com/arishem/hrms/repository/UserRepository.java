@@ -111,6 +111,8 @@ public class UserRepository {
             response.put("userid", row[2]);  // userid
             response.put("displayname", row[3]); // displayname
             response.put("imagepath", row[4]); // imagepath
+            response.put("isactive", row[5]); // imagepath
+            response.put("roletype", row[6]); // imagepath
         } else {
             response.put("status", -2);
             response.put("message", "User not found");
